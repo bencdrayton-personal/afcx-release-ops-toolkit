@@ -1,0 +1,6 @@
+{
+  "defect_leakage_rate_p90": 0.06,
+  "env_drift_incidents_90d": 2,
+  "change_request_overrun_rate": 0.12,
+  "member_uat_participation_rate": 0.85
+}

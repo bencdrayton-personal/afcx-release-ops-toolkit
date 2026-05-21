@@ -1,0 +1,50 @@
+[
+  {
+    "release_id": "RC_2026_06_AFCX_IQ_v2.14.0",
+    "product_line": "AFCX_IQ",
+    "vendor": "Alliance Software",
+    "submitted_by": "Vendor PM",
+    "submitted_at": "2026-06-04T09:12:00+10:00",
+    "scope": {
+      "feature_changes": 3,
+      "schema_changes": 1,
+      "auth_changes": 0,
+      "intel_pipeline_changes": 1,
+      "touched_surfaces": ["IQ.search", "IQ.intel.signals", "Exchange.signals.scam"],
+      "touched_fields": ["victim_pii.account_holder_name"],
+      "keywords": ["dedup"]
+    }
+  },
+  {
+    "release_id": "RC_2026_06_FRX_v1.8.2",
+    "product_line": "FRX",
+    "vendor": "Alliance Software",
+    "submitted_by": "Vendor PM",
+    "submitted_at": "2026-06-05T15:40:00+10:00",
+    "scope": {
+      "feature_changes": 2,
+      "schema_changes": 0,
+      "auth_changes": 0,
+      "intel_pipeline_changes": 0,
+      "touched_surfaces": ["FRX.member.dashboard"],
+      "touched_fields": [],
+      "keywords": []
+    }
+  },
+  {
+    "release_id": "RC_2026_06_Exchange_v3.2.0",
+    "product_line": "AFCX_Exchange",
+    "vendor": "Alliance Software",
+    "submitted_by": "Vendor PM",
+    "submitted_at": "2026-06-06T11:00:00+10:00",
+    "scope": {
+      "feature_changes": 1,
+      "schema_changes": 2,
+      "auth_changes": 1,
+      "intel_pipeline_changes": 0,
+      "touched_surfaces": ["Exchange.signals.scam", "CDR.export", "GovMatch.ato"],
+      "touched_fields": ["victim_pii.identity_documents"],
+      "keywords": ["matching", "aml"]
+    }
+  }
+]

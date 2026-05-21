@@ -1,0 +1,88 @@
+[
+  {
+    "release_id": "RC_2026_06_AFCX_IQ_v2.14.0",
+    "product_line": "AFCX_IQ",
+    "decision": "ESCALATE_TO_MD",
+    "scores": {
+      "vendor_delivery_risk": 7.8,
+      "intel_integrity_risk": 10.0,
+      "member_impact_risk": 9.5,
+      "regulatory_exposure_risk": 9.0,
+      "rollback_difficulty": 5.0,
+      "composite_risk": 8.76
+    },
+    "required_gates": [
+      "PRIVACY_OFFICER_REVIEW",
+      "PRIVACY_IMPACT_ASSESSMENT",
+      "MEMBER_NOTIFICATION_72H",
+      "INTEL_QUALITY_SHADOW_RUN",
+      "MEMBER_UAT_TIER1_SIGNOFF",
+      "BACKOUT_PLAN_REHEARSED"
+    ],
+    "triggered_obligations": [
+      "privacy_act_notifiable_pii_change",
+      "msa_clause_4_3_data_handling",
+      "msa_clause_4_7_intel_dedup"
+    ],
+    "explanation": "Schema change touches victim PII used by 13 members (incl. tier-1). Intel pipeline change requires shadow-run before promotion. Triggered obligations: privacy_act_notifiable_pii_change, msa_clause_4_3_data_handling, msa_clause_4_7_intel_dedup. Single-dimension critical risk requires MD authorisation before promotion.",
+    "obligation_matrix_version": "2026.05.01",
+    "scored_at": "2026-05-21T07:26:24.832868+00:00"
+  },
+  {
+    "release_id": "RC_2026_06_FRX_v1.8.2",
+    "product_line": "FRX",
+    "decision": "SHIP_WITH_GUARDRAILS",
+    "scores": {
+      "vendor_delivery_risk": 7.8,
+      "intel_integrity_risk": 0.0,
+      "member_impact_risk": 6.5,
+      "regulatory_exposure_risk": 0,
+      "rollback_difficulty": 2.0,
+      "composite_risk": 5.46
+    },
+    "required_gates": [
+      "MEMBER_UAT_TIER1_SIGNOFF"
+    ],
+    "triggered_obligations": [],
+    "explanation": "Acceptable composite but specific gates must be satisfied before promotion.",
+    "obligation_matrix_version": "2026.05.01",
+    "scored_at": "2026-05-21T07:26:24.832925+00:00"
+  },
+  {
+    "release_id": "RC_2026_06_Exchange_v3.2.0",
+    "product_line": "AFCX_Exchange",
+    "decision": "ESCALATE_TO_MD",
+    "scores": {
+      "vendor_delivery_risk": 7.8,
+      "intel_integrity_risk": 8.0,
+      "member_impact_risk": 9.5,
+      "regulatory_exposure_risk": 10.0,
+      "rollback_difficulty": 10.0,
+      "composite_risk": 8.86
+    },
+    "required_gates": [
+      "PRIVACY_OFFICER_REVIEW",
+      "PRIVACY_IMPACT_ASSESSMENT",
+      "AUSTRAC_LIAISON_REVIEW",
+      "ACCC_CDR_NOTIFICATION",
+      "MEMBER_NOTIFICATION_72H",
+      "AGD_HOMEAFFAIRS_HEADS_UP",
+      "GOV_DATA_MATCHING_REVIEW",
+      "SECURITY_REVIEW",
+      "MEMBER_UAT_TIER1_SIGNOFF",
+      "BACKOUT_PLAN_REHEARSED"
+    ],
+    "triggered_obligations": [
+      "privacy_act_notifiable_pii_change",
+      "aml_ctf_reporting_field",
+      "cdr_endpoint_change",
+      "msa_clause_4_3_data_handling",
+      "msa_clause_4_7_intel_dedup",
+      "government_data_matching_surface",
+      "auth_surface"
+    ],
+    "explanation": "Schema change touches victim PII used by 13 members (incl. tier-1). Auth surface change triggers 72h member notification. Triggered obligations: privacy_act_notifiable_pii_change, aml_ctf_reporting_field, cdr_endpoint_change, msa_clause_4_3_data_handling, msa_clause_4_7_intel_dedup, government_data_matching_surface, auth_surface. Single-dimension critical risk requires MD authorisation before promotion.",
+    "obligation_matrix_version": "2026.05.01",
+    "scored_at": "2026-05-21T07:26:24.832953+00:00"
+  }
+]

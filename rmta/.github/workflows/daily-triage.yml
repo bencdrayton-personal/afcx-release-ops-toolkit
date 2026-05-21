@@ -1,0 +1,70 @@
+name: RMTA Daily Triage
+
+# Runs every weekday morning at 06:00 AEST (20:00 UTC the day before).
+# Posts the triage report as a GitHub issue if any flags are raised, so the
+# TPM and the vendor PM see it as part of normal repo activity.
+
+on:
+  schedule:
+    - cron: "0 20 * * 0-4"        # Sun-Thu 20:00 UTC = Mon-Fri 06:00 AEST
+  workflow_dispatch:                # manual trigger from GitHub UI
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+
+      - name: Fetch milestone from Jira
+        env:
+          JIRA_HOST: ${{ secrets.JIRA_HOST }}
+          JIRA_USER: ${{ secrets.JIRA_USER }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+        run: |
+          # In production: pulls live milestone via Jira REST API.
+          # In this concept repo: uses the committed sample.
+          cp samples/jira_milestone.json /tmp/milestone.json
+
+      - name: Run RMTA triage
+        run: |
+          python -m rmta triage /tmp/milestone.json \
+            --out /tmp/triage_report.md
+          cat /tmp/triage_report.md
+
+      - name: Open or update triage issue if flags raised
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('/tmp/triage_report.md', 'utf8');
+            const today = new Date().toISOString().slice(0,10);
+            const title = `RMTA triage — ${today}`;
+
+            // Only open an issue if the report contains flags or AT_RISK status.
+            if (!body.includes('Flagged stories (0)') && (body.includes('AT_RISK') || body.includes('Flagged stories'))) {
+              const { data: existing } = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: 'rmta',
+                state: 'open',
+              });
+              const match = existing.find(i => i.title.startsWith('RMTA triage'));
+              if (match) {
+                await github.rest.issues.update({
+                  owner: context.repo.owner, repo: context.repo.repo,
+                  issue_number: match.number, title, body,
+                });
+              } else {
+                await github.rest.issues.create({
+                  owner: context.repo.owner, repo: context.repo.repo,
+                  title, body, labels: ['rmta'],
+                });
+              }
+            }

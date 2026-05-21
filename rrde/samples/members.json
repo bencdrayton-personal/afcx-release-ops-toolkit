@@ -1,0 +1,109 @@
+{
+  "members": [
+    {
+      "member_id": "anz",
+      "name": "ANZ",
+      "tier": 1,
+      "surfaces_consumed": ["IQ.search", "IQ.intel.signals", "Exchange.signals.scam", "FRX.member.dashboard", "CDR.export"],
+      "requires_member_redeploy_on_schema": true
+    },
+    {
+      "member_id": "cba",
+      "name": "Commonwealth Bank",
+      "tier": 1,
+      "surfaces_consumed": ["IQ.search", "IQ.intel.signals", "Exchange.signals.scam", "FRX.member.dashboard", "CDR.export"],
+      "requires_member_redeploy_on_schema": true
+    },
+    {
+      "member_id": "nab",
+      "name": "NAB",
+      "tier": 1,
+      "surfaces_consumed": ["IQ.search", "IQ.intel.signals", "Exchange.signals.scam", "FRX.member.dashboard", "CDR.export"],
+      "requires_member_redeploy_on_schema": true
+    },
+    {
+      "member_id": "wbc",
+      "name": "Westpac",
+      "tier": 1,
+      "surfaces_consumed": ["IQ.search", "IQ.intel.signals", "Exchange.signals.scam", "FRX.member.dashboard", "CDR.export"],
+      "requires_member_redeploy_on_schema": true
+    },
+    {
+      "member_id": "mac",
+      "name": "Macquarie Bank",
+      "tier": 2,
+      "surfaces_consumed": ["IQ.search", "IQ.intel.signals", "Exchange.signals.scam"],
+      "requires_member_redeploy_on_schema": true
+    },
+    {
+      "member_id": "bendigo",
+      "name": "Bendigo & Adelaide Bank",
+      "tier": 2,
+      "surfaces_consumed": ["IQ.search", "Exchange.signals.scam"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "boq",
+      "name": "Bank of Queensland",
+      "tier": 2,
+      "surfaces_consumed": ["IQ.search", "Exchange.signals.scam"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "ing",
+      "name": "ING Australia",
+      "tier": 2,
+      "surfaces_consumed": ["IQ.search", "Exchange.signals.scam"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "ame",
+      "name": "American Express AU",
+      "tier": 2,
+      "surfaces_consumed": ["IQ.search", "Exchange.signals.scam"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "telstra",
+      "name": "Telstra",
+      "tier": 2,
+      "surfaces_consumed": ["Exchange.signals.scam", "FRX.member.dashboard"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "optus",
+      "name": "Optus",
+      "tier": 2,
+      "surfaces_consumed": ["Exchange.signals.scam", "FRX.member.dashboard"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "tpg",
+      "name": "TPG",
+      "tier": 3,
+      "surfaces_consumed": ["Exchange.signals.scam"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "credit_union_aus",
+      "name": "Credit Union Australia",
+      "tier": 3,
+      "surfaces_consumed": ["IQ.search"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "meta_pilot",
+      "name": "Meta (pilot)",
+      "tier": 3,
+      "surfaces_consumed": ["FRX.member.dashboard"],
+      "requires_member_redeploy_on_schema": false
+    },
+    {
+      "member_id": "ato",
+      "name": "ATO data-matching",
+      "tier": 3,
+      "surfaces_consumed": ["GovMatch.ato"],
+      "requires_member_redeploy_on_schema": false
+    }
+  ]
+}

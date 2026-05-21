@@ -1,0 +1,84 @@
+# RRDE Obligation Matrix
+# ----------------------
+# Versioned regulatory / contractual obligation lookup. Owned jointly by the
+# TPM and the Privacy/Compliance lead. Changes go through PR review.
+#
+# Each rule:
+#   - triggered_when: shape conditions on the release scope (AND-combined)
+#   - exposure: 0-10 contribution to regulatory_exposure_risk (stacks, capped at 10)
+#   - required_gates: governance steps that MUST be satisfied if triggered
+
+version: "2026.05.01"
+
+rules:
+  - id: privacy_act_notifiable_pii_change
+    label: "Privacy Act 1988 — change to personal information collection or handling"
+    triggered_when:
+      touches_field_any:
+        - victim_pii.account_holder_name
+        - victim_pii.dob
+        - victim_pii.identity_documents
+        - reporter_pii.contact
+    exposure: 5
+    required_gates:
+      - PRIVACY_OFFICER_REVIEW
+      - PRIVACY_IMPACT_ASSESSMENT
+
+  - id: aml_ctf_reporting_field
+    label: "AML/CTF Act — change to reporting fields or thresholds"
+    triggered_when:
+      touches_keyword_any: [aml, ctf, smr, threshold_transaction]
+    exposure: 4
+    required_gates:
+      - AUSTRAC_LIAISON_REVIEW
+
+  - id: cdr_endpoint_change
+    label: "Consumer Data Right — change to CDR endpoint or data flow"
+    triggered_when:
+      touches_surface_prefix_any: ["CDR."]
+    exposure: 3
+    required_gates:
+      - ACCC_CDR_NOTIFICATION
+
+  - id: msa_clause_4_3_data_handling
+    label: "Member Service Agreement clause 4.3 — material change to data handling"
+    triggered_when:
+      scope_field_gt:
+        schema_changes: 0
+    exposure: 2
+    required_gates:
+      - MEMBER_NOTIFICATION_72H
+
+  - id: msa_clause_4_7_intel_dedup
+    label: "Member Service Agreement clause 4.7 — change to intel dedup/matching logic"
+    triggered_when:
+      touches_keyword_any: [dedup, matching, fuzzy_match]
+    exposure: 2
+    required_gates:
+      - MEMBER_NOTIFICATION_72H
+
+  - id: government_data_matching_surface
+    label: "ATO / DHA / AGD data-matching surface affected"
+    triggered_when:
+      touches_surface_prefix_any: ["GovMatch.", "ATO.", "AGD."]
+    exposure: 5
+    required_gates:
+      - AGD_HOMEAFFAIRS_HEADS_UP
+      - GOV_DATA_MATCHING_REVIEW
+
+  - id: epayments_code
+    label: "ePayments Code — touch to payment-redirection or victim-fund flows"
+    triggered_when:
+      touches_keyword_any: [payment_redirect, mule_account, fund_recovery]
+    exposure: 3
+    required_gates:
+      - LEGAL_REVIEW
+
+  - id: auth_surface
+    label: "Authentication / authorisation surface modified"
+    triggered_when:
+      scope_field_gt:
+        auth_changes: 0
+    exposure: 3
+    required_gates:
+      - SECURITY_REVIEW
