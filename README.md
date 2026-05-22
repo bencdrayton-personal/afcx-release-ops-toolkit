@@ -34,7 +34,7 @@ python -m rmta triage samples/jira_milestone.json --as-of 2026-06-10
 
 ## Portfolio framing
 
-This toolkit is concept code (~600 lines of Python) deliberately kept lean. The point is **the design decisions, the scoring/heuristic logic, and the operational workflow** — not the line count. Both artefacts are designed to be re-implementable inside the AFCX vendor-managed model in 2–3 sprints each, using data that already exists in the vendor's pipeline and the member-coordination workflow.
+This toolkit is a concept deliberately kept lean. The point is **the design decisions, the scoring/heuristic logic, and the operational workflow** — not the line count. Both artefacts are designed to be re-implementable inside the AFCX vendor-managed model in 2–3 sprints each, using data that already exists in the vendor's pipeline and the member-coordination workflow.
 
 If extended into production, RRDE would gain (1) post-incident weight recalibration via supervised learning, (2) a member-facing UAT scheduling integration, and (3) an obligation-matrix UI for the Privacy Officer. RMTA would gain (1) anomaly detection on team velocity, (2) LLM-powered summarisation of the daily digest with confidence-rated risk calls, and (3) automated nudges into Jira/Slack on flagged tickets.
 
