@@ -1,7 +1,7 @@
 # Release Ops Toolkit
 *Two small tools for the AFCX Technical Product Manager role. Ben Drayton, 2026-05-21.*
 
-*Repository: **github.com/bencdrayton/afcx-release-ops-toolkit***
+*Repository: **github.com/bencdrayton-personal/afcx-release-ops-toolkit***
 
 Two Python programs that address the two recurring failure modes in vendor-managed release delivery: the risk label on a release is assigned inconsistently or in tribal knowledge, and milestone slippage becomes visible too late to renegotiate with downstream stakeholders.
 
